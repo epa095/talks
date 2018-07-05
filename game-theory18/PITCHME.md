@@ -90,6 +90,7 @@ Several studies have demonstrated that the Nash equilibrium (and likewise, subga
 
 > [...] is a game where several people guess what 2/3 of the average of their guesses will be, and where the numbers are restricted to the real numbers between 0 and 100, inclusive. The winner is the one closest to the 2/3 average.
  
++++
 
 @ul
 * 21.6 was the winning value in a large internet-based competition organized by the Danish newspaper Politiken. This included 19 196 people and with a prize of 5000 Danish kroner.
