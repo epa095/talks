@@ -1,4 +1,8 @@
-# Why Game Theory?
+# Game Theory 
+
++++ 
+
+## Why Game Theory?
 
 +++
 
@@ -7,18 +11,18 @@
 
 +++
 
-# But what is it?
+## But what is it?
 
 > [...] the study of mathematical models of conflict and cooperation between intelligent rational decision-makers
 
 +++
 
-## Normative vs descriptive
+### Normative vs descriptive
 
 @ul
 
 - Descriptive: Game theory gives reasonable scientific ideal models, similar to models used by physicists
-- - Underlying is an assumption of a "continuity" between the errors in the hyphotesises and errors in the conclusion.
+  + Underlying is an assumption of a "continuity" between the errors in the hyphotesises and errors in the conclusion.
 - Normative: Game theory explains how rational decision makers ought to behave. 
 
 @ulend
