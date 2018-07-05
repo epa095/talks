@@ -13,12 +13,12 @@
 
 +++
 
-## Normative vs descriptive?
+## Normative vs descriptive
 
 @ul
 
 - Descriptive: Game theory gives reasonable scientific ideal models, similar to models used by physicists
--   - Underlying is an assumption of a "continuity" between the errors in the hyphotesises and errors in the conclusion.
+- - Underlying is an assumption of a "continuity" between the errors in the hyphotesises and errors in the conclusion.
 - Normative: Game theory explains how rational decision makers ought to behave. 
 
 @ulend
@@ -50,7 +50,7 @@ Normal form:
 
 +++
 
-![Canadian Cod](https://upload.wikimedia.org/wikipedia/commons/5/54/Surexploitation_morue_surp%C3%AAcheEn.jpg)
+![Canadian Cod](https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Surexploitation_morue_surp%C3%AAcheEn.jpg/613px-Surexploitation_morue_surp%C3%AAcheEn.jpg)
 
 ---
 
@@ -59,7 +59,7 @@ Normal form:
 @ul 
 
 * Repeated games, finite/infinite/unbound
-* perfect/inperfect information
+* Perfect/inperfect information
 * 1-n players
 * Pure vs randomized strategies
 * Sequential/simultaneous
@@ -68,8 +68,8 @@ Normal form:
 
 ---
 
-# Centipede game
-
+## Centipede game
+ 
 ![Centipede game](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Centipede_game.png/800px-Centipede_game.png)
 
 +++
@@ -86,14 +86,15 @@ Several studies have demonstrated that the Nash equilibrium (and likewise, subga
 
 > [...] is a game where several people guess what 2/3 of the average of their guesses will be, and where the numbers are restricted to the real numbers between 0 and 100, inclusive. The winner is the one closest to the 2/3 average.
  
-@ul
-* 0 is the only pure strategy Nash Equilibrium.
-* 21.6 was the winning value in a large internet-based competition organized by the Danish newspaper Politiken. This included 19,196 people and with a prize of 5000 Danish kroner.
++++
 
+@ul
+* 21.6 was the winning value in a large internet-based competition organized by the Danish newspaper Politiken. This included 19,196 people and with a prize of 5000 Danish kroner.
+* 0 is the only pure strategy Nash Equilibrium.
 @ulend
 
 ---
 
-# Braess' paradox!
+## Braess' paradox!
 
 ![Braess' paradox](https://upload.wikimedia.org/wikipedia/commons/0/01/Braess_paradox_road_example.svg)
