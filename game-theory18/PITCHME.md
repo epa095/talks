@@ -58,20 +58,6 @@ Normal form:
 
 ---
 
-### This is game theory, but game theory is not this!
-
-@ul 
-
-* Repeated games, finite/infinite/unbound
-* Perfect/inperfect information
-* 1-n players
-* Pure vs randomized strategies
-* Sequential/simultaneous
-
-@ulend
-
----
-
 ## Centipede game
  
 ![Centipede game](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Centipede_game.png/800px-Centipede_game.png)
@@ -102,3 +88,18 @@ Several studies have demonstrated that the Nash equilibrium (and likewise, subga
 ## Braess' paradox!
 
 ![Braess' paradox](https://upload.wikimedia.org/wikipedia/commons/0/01/Braess_paradox_road_example.svg)
+
+
+---
+
+### This is game theory, but game theory is not this!
+
+@ul 
+
+* Repeated games, finite/infinite/unbound
+* Perfect/inperfect information
+* 1-n players
+* Pure vs randomized strategies
+* Sequential/simultaneous
+
+@ulend
