@@ -89,16 +89,15 @@ Several studies have demonstrated that the Nash equilibrium (and likewise, subga
 
 ![Braess' paradox](https://upload.wikimedia.org/wikipedia/commons/0/01/Braess_paradox_road_example.svg)
 
----
++++
 
 ![Braess' paradox](img/Braess_paradox_road_example-non-neq.svg)
 
----
++++
 
 ![Braess' paradox](img/Braess_paradox_road_example-with-neq.svg)
 
----
-
++++
 
 
 ### This is game theory, but game theory is not this!
