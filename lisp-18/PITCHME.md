@@ -1,117 +1,387 @@
-# LISP
+# Schemy listy lispy lisps
+
++++ 
+or
+
+# Advanced Lisp for programming noobs
+
 
 +++ 
 
-## Code
+Lisps:
+
+* Common lisp
+
+* Scheme
+
+* Clojure
+
++++
+
+
+## Prefix notation
+
+* fac(5) -> (fac 5)
+
+* gcd(6,3) -> (gcd 6 3)
+
+* 4 + 2 -> (+ 4 2)
+ 
+* 4 + 2 + 6 -> (+ 4 2 6) 
+  
+* 4 + (6 / 2) -> (+ 4 (/ 6 2))
+
+## REPL examples
+
+* (+ (print 3) (print 4))
+  
+* (if 't (print 3) (print 4))
+
+* (if nil (print 3) (print 4))
+  
+* (list 2 (+ 1 5) "a string")
+
+* '(list 2 (+ 1 5) "a string") 
+
+* (eval '(list 2 (+ 1 5) "a string") )
+
+* `(list 2 ,(+ 1 5) "a string")
+
+* (progn (print "hello") (print "world")) # example
+
+
+
+
++++
+
+## QUIZ!
+
+* `(+ 2 ,(+ 1 5) )
+
+* (eval `(+ 2 ,(+ 1 5) ) )
+
+* `(+ ,(+ 1 5) ,(+  2 (+ 3 4)))
+
+* `(+ ,(+ 1 5) `(+  2 ,(+ 3 4)))
+
+* `(+ ,(+ 1 5) ,`(+  2 ,(+ 3 4)))
+
+* (or (print "hello") (print " world"))
+
+* (loop for x in (list 1 4 6 3) collect (+ 2 x))
+
+* `(+ ,(loop for x in (list 3 4) collect (+ 2 x)))
+
+* `(+ ,@(loop for x in (list 3 4) collect (+ 2 x)))
+
+* `(+ ,@(loop for x in (list 3 4) collect `(+ 2 ,x)))
+
+
+
+
+
+
 
 +++
 
 ```
 (defun fac (&optional (n 0))
- (if (>= n 0)
-  1
-  (* n (fac (- n 1)))))
+  (if (>= n 0)
+      1
+      (* n (fac (- n 1)))))
 ```
 
 +++
 
-## But what is it?
+## Lexical scoping
 
-> [...] the study of mathematical models of conflict and cooperation between intelligent rational decision-makers
+(defvar *X*)
+   
+(defun my-fun(var)
+(+ var *X*))
 
-+++
+(let ((*X* 5)) (my-fun 4))
 
-### Normative vs descriptive
 
-@ul
+Mostly seen with `*standard-output*`
 
-- Descriptive: Game theory gives reasonable scientific ideal models, similar to models used by physicists
-  + Underlying is an assumption of a "continuity" between the errors in the hyphotesises and errors in the conclusion.
-- Normative: Game theory explains how rational decision makers ought to behave. 
 
-@ulend
+## 
 
----
 
-## Prisoner's dilemma
+```
+(defun test-+ ()
+  (and
+    (= (+ 1 2) 3)
+    (= (+ 1 2 3) 6)
+    (= (+ -1 -3) -4)))
 
-Originally formulated in 1950:
-
-+++
-
-Two members of a criminal gang are arrested and imprisoned. Each prisoner is in solitary confinement with no means of communicating with the other. The prosecutors lack sufficient evidence to convict the pair on the principal charge, but they have enough to convict both on a lesser charge. Simultaneously, the prosecutors offer each prisoner a bargain. Each prisoner is given the opportunity either to: betray the other by testifying that the other committed the crime, or to cooperate with the other by remaining silent. The offer is:
-
-+++
-
-* If A and B each betray the other, each of them serves 2 years in prison
-* If A betrays B but B remains silent, A will be set free and B will serve 3 years in prison (and vice versa)
-* If A and B both remain silent, both of them will only serve 1 year in prison (on the lesser charge).
-
-+++
-Normal form:
-
-| A \ B            | B remains silent | B betrays |
-|------------------|------------------|-----------|
-| A remains silent | -1 \ -1          | -3 \ 0    | 
-| A betrays        | 0 \ -3           | -2 \ -2   |
-
+```
 
 +++
 
-![Canadian Cod](https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Surexploitation_morue_surp%C3%AAcheEn.jpg/613px-Surexploitation_morue_surp%C3%AAcheEn.jpg)
+```
+(defun report-result (result form)
+  (format t "~:[FAIL~;pass~] ... ~a~%" result form))
 
----
+```
 
-## Centipede game
++++
+
+
+```
+(defun test-+ ()
+  (report-result (= (+ 1 2) 3) '(= (+ 1 2) 3))
+  (report-result (= (+ 1 2 3) 6) '(= (+ 1 2 3) 6))
+  (report-result (= (+ -1 -3) -4) '(= (+ -1 -3) -4)))
+```
+
++++
+
+
+```
+(defmacro check (form)
+  `(report-result ,form ',form))
+
+```
+
++++
+
+
+```
+(macroexpand-1 '(check (= (+ 1 2) 3)))
+
+```
+
++++
+
+```
+(defun test-+ ()
+  (check (= (+ 1 2) 3))
+  (check (= (+ 1 2 3) 6))
+  (check (= (+ -1 -3) -4))) 
+
+
+```
+
++++
+
+```
+
+
+```
+
++++
+Wants to be able to write
+```
+(defun test-+ ()
+  (check
+    (= (+ 1 2) 3)
+    (= (+ 1 2 3) 6)
+    (= (+ -1 -3) -4)))
+
+```
+
++++
+
+
+```
+
+(PROGN
+ (REPORT-RESULT (= (+ 1 2) 3) '(= (+ 1 2) 3))
+ (REPORT-RESULT (= (+ 1 2 3) 6) '(= (+ 1 2 3) 6))
+ (REPORT-RESULT (= (+ -1 -3) -4) '(= (+ -1 -3) -4)))
  
-![Centipede game](https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Centipede_game.png/800px-Centipede_game.png)
+
+```
 
 +++
 
-Several studies have demonstrated that the Nash equilibrium (and likewise, subgame perfect equilibrium) play is rarely observed. Instead, subjects regularly show partial cooperation, playing "R" (or "r") for several moves before eventually choosing "D" (or "d"). It is also rare for subjects to cooperate through the whole game.
+```
+(defmacro check (&body forms)
+  `(progn
+     ,(loop for f in forms collect `(report-result ,f ',f))))
+
+```
+
++++
+
+
+```
+(defmacro check (&body forms)
+  `(progn
+     ,@(loop for f in forms collect `(report-result ,f ',f))))
+```
+
++++
+Now we can write
+```
+(defun test-+ ()
+  (check
+    (= (+ 1 2) 3)
+    (= (+ 1 2 3) 6)
+    (= (+ -1 -3) -4)))
+
+
+```
+
++++
+
+```
+(defun report-result (result form)
+  (progn
+    (format t "~:[FAIL~;pass~] ... ~a~%" result form)
+    result))
+
+```
+
++++
+
+```
+(defmacro check (&body forms)
+  `(and
+     ,@(loop for f in forms collect `(report-result ,f ',f))))
+```
+
++++
+
+```
+(combine-results
+  foo
+  bar
+  baz)
+```
+ -> 
+```
+(let ((result t))
+  (if (not foo) (setf result nil))
+  (if (not bar) (setf result nil))
+  (if (not baz) (setf result nil))
+  result)
+  
+```
+
++++
+
+```
+(defmacro combine-results (&body forms)
+    `(let ((result t))
+      ,@(loop for f in forms collect `(if (not ,f)  (setf result nil)))
+      result))
+```
+
++++
+```
+(defmacro check (&body forms)
+  `(combine-results
+     ,@(loop for f in forms collect `(report-result ,f ',f))))
+```
+
++++
+```
+ (defun test-+ ()
+           (check (= (+ 1 2) 3)
+             (= (+ 1 2 3) 23)
+             (= (+ -1 -3) -4)))
+```
+
++++
+```
+CL-USER> (test-+)
+pass ... (= (+ 1 2) 3)
+FAIL ... (= (+ 1 2 3) 23)
+pass ... (= (+ -1 -3) -4)
+NIL
+```
+
++++
+```
+(defun test-+ ()
+           (check (= (+ 1 2) 3)
+             (= (+ 1 2 3) 6)
+             (= (+ -1 -3) -4)))
+```
+
++++
+```
+CL-USER> (test-+)
+pass ... (= (+ 1 2) 3)
+pass ... (= (+ 1 2 3) 6)
+pass ... (= (+ -1 -3) -4)
+T
+```
+
++++
+```
+(defun test-* ()
+  (check
+    (= (* 2 2) 4)
+    (= (* 3 5) 15)))
+```
+
++++
+```
+(defun test-arithmetic ()
+  (combine-results
+   (test-+)
+   (test-*)))
+```
++++
+```
+(defvar *test-name* nil)
+
+```
++++
+```
+(defun report-result (result form)
+  (progn
+    (format t "~:[FAIL~;pass~] ... ~a: ~a~%" result *test-name* form)
+    result))
+```
++++
+```
+(defun test-+ ()
+(let ((*test-name* 'test-+))
+       (check (= (+ 1 2) 3)
+              (= (+ 1 2 3) 6)
+              (= (+ -1 -3) -4))))
+
+```
++++
+```
+(deftest test-+ ()
+       (check (= (+ 1 2) 3)
+              (= (+ 1 2 3) 6)
+              (= (+ -1 -3) -4)))
+```
++++
+```
+(defmacro deftest (name parameters &body body)
+   `(defun ,name ,parameters
+      (let ((*test-name* ',name))
+      ,@body)))
+```
++++
+```
+(defmacro deftest (name parameters &body body)
+   `(defun ,name ,parameters
+      (let ((*test-name* (append *test-name* (list ',name)) ))
+      ,@body)))
+```
++++
+
+
+# Why not lisp?
+
+> I came to Python not because I thought it was a better/acceptable/pragmatic Lisp, but because it was better pseudocode
 
 +++ 
 
-> As with other games, for instance the ultimatum game, as the stakes increase the play approaches (but does not reach) Nash equilibrium play.[citation needed]
-
----
-
-## 2/3 of the average game
-
-> [...] is a game where several people guess what 2/3 of the average of their guesses will be, and where the numbers are restricted to the real numbers between 0 and 100, inclusive. The winner is the one closest to the 2/3 average.
- 
-+++
-
-@ul
-* 21.6 was the winning value in a large internet-based competition organized by the Danish newspaper Politiken. This included 19 196 people and with a prize of 5000 Danish kroner.
-* 0 is the only pure strategy Nash Equilibrium.
-@ulend
-
----
-
-## Braess' paradox!
-
-![Braess' paradox](https://upload.wikimedia.org/wikipedia/commons/0/01/Braess_paradox_road_example.svg)
+> I think Lisp still has an edge for larger projects and for applications where the speed of the compiled code is important. But Python has the edge (with a large number of students) when the main goal is communication, not programming per se.
 
 +++
 
-![Braess' paradox](img/Braess_paradox_road_example-non-neq.svg)
+> In terms of programming-in-the-large, at Google and elsewhere, I think that language choice is not as important as all the other choices: if you have the right overall architecture, the right team of programmers, the right development process that allows for rapid development with continuous improvement, then many languages will work for you; if you don't have those things you're in trouble regardless of your language choice. 
 
 +++
 
-![Braess' paradox](img/Braess_paradox_road_example-with-neq.svg)
-
-+++
-
-
-### This is game theory, but game theory is not this!
-
-@ul 
-
-* Repeated games, finite/infinite/unbound
-* Perfect/inperfect information
-* 1-n players
-* Pure vs randomized strategies
-* Sequential/simultaneous
-
-@ulend
