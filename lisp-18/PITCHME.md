@@ -38,9 +38,11 @@ Lisps:
 ## REPL examples
 
 @ul
-* (+ (print 3) (print 4))
+* ```Lisp
+(+ (print 3) (print 4))```
   
-* (if t (print 3) (print 4))
+* ```Lisp
+(if t (print 3) (print 4))```
 
 * (if nil (print 3) (print 4)) 
   
@@ -48,6 +50,8 @@ Lisps:
 
 * '(list 2 (+ 1 5) "a string") 
 @ulend
+
++++
 
 @ul
 * (eval '(list 2 (+ 1 5) "a string"))
@@ -108,7 +112,7 @@ Lisps:
 
 ## Lexical scoping
 
-```
+```Lisp
 (defvar *X* 2)
   
 (defun my-fun(var)
