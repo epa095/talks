@@ -47,11 +47,10 @@ Lisps:
 * (list 2 (+ 1 5) "a string")
 
 * '(list 2 (+ 1 5) "a string") 
-
 @ulend
-@ul
 
-* (eval '(list 2 (+ 1 5) "a string") )
+@ul
+* (eval '(list 2 (+ 1 5) "a string"))
 
 * `(list 2 ,(+ 1 5) "a string")
 
@@ -60,14 +59,15 @@ Lisps:
 * `(list 2 ,@(list 1 5) "a string")
 
 * (progn (print "hello") (print "world"))
-@ulend
 
-+++
+@ulend
 
 ## QUIZ!
 
++++
+
 @ul
-* `(+ 2 ,(+ 1 5) )
+* `(+ 2 ,(+ 1 5))
 
 * (eval `(+ 2 ,(+ 1 5) ) )
 
