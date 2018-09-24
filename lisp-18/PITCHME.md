@@ -110,8 +110,7 @@ Lisps:
 
 ```
 (defvar *X* 2)
-   
-
+  
 (defun my-fun(var)
    (+ var *X*))
 
@@ -128,7 +127,7 @@ Lisps:
 
 Mostly seen with `*standard-output*`
 
-## 
+## Test framework
 
 
 ```
@@ -166,13 +165,14 @@ Mostly seen with `*standard-output*`
   `(report-result ,form ',form))
 
 ```
-
-+++
-
-
+s
 ```
 (macroexpand-1 '(check (= (+ 1 2) 3)))
 
+```
+->
+```
+(REPORT-RESULT (= (+ 1 2) 3) '(= (+ 1 2) 3))
 ```
 
 +++
@@ -182,14 +182,6 @@ Mostly seen with `*standard-output*`
   (check (= (+ 1 2) 3))
   (check (= (+ 1 2 3) 6))
   (check (= (+ -1 -3) -4))) 
-
-
-```
-
-+++
-
-```
-
 
 ```
 
@@ -203,9 +195,6 @@ Wants to be able to write
     (= (+ -1 -3) -4)))
 
 ```
-
-+++
-
 
 ```
 
@@ -221,18 +210,8 @@ Wants to be able to write
 
 ```
 (defmacro check (&body forms)
-  `(progn
-     ,(loop for f in forms collect `(report-result ,f ',f))))
-
-```
-
-+++
-
-
-```
-(defmacro check (&body forms)
-  `(progn
-     ,@(loop for f in forms collect `(report-result ,f ',f))))
+  `(progn 
+    ,@(loop for f in forms collect `(report-result ,f ',f))))
 ```
 
 +++
@@ -244,11 +223,10 @@ Now we can write
     (= (+ 1 2 3) 6)
     (= (+ -1 -3) -4)))
 
-
 ```
 
 +++
-
+But what about the result values?
 ```
 (defun report-result (result form)
   (progn
@@ -393,7 +371,10 @@ T
 +++
 
 
-# Why not lisp?
+# Why are Lisp loosing?
+Three quotes by Peter Norvig
+
++++
 
 > I came to Python not because I thought it was a better/acceptable/pragmatic Lisp, but because it was better pseudocode
 
@@ -407,3 +388,4 @@ T
 
 +++
 
+>  Patterns mean "I have run out of language." — Rich Hickey 
