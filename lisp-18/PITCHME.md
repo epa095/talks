@@ -72,16 +72,29 @@ Lisps:
 
 * `(+ ,(+ 1 5) ,(+  2 (+ 3 4)))
 
-* `(+ ,(+ 1 5) `(+  2 ,(+ 3 4)))
+* `(+ ,(+ 1 5) `(+  2 ,(+ 3 4))) ; 3 alternatives, see below
 
-* `(+ ,(+ 1 5) ,`(+  2 ,(+ 3 4)))
+@ol
+   1. (+ 6 `(+  2 7))
+
+   2. (+ 6 9)
+
+   3. (+ 6 `(+ 2 ,(+ 3 4)))
+
+@olend
+
+* `(+ ,(+ 1 5) ,`(+  2 ,(+ 3 4))) 
+
+@olend
+
+
 @ulend
 
 @ul
 
 * (or (print "hello") (print " world"))
 
-* (loop for x in (list 1 4 6 3) collect (+ 2 x))
+* (loop for x in (list 1 4) collect (+ 2 x))
 
 * `(+ ,(loop for x in (list 3 4) collect (+ 2 x)))
 
@@ -91,23 +104,14 @@ Lisps:
 
 @ulend
 
-
-+++
-
-```
-(defun fac (&optional (n 0))
-  (if (>= n 0)
-      1
-      (* n (fac (- n 1)))))
-```
-
 +++
 
 ## Lexical scoping
 
+```
 (defvar *X* 2)
    
-```
+
 (defun my-fun(var)
    (+ var *X*))
 
