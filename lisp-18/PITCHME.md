@@ -40,14 +40,12 @@ Lisps:
 @ul
 * (+ (print 3) (print 4))
   
-* (if 't (print 3) (print 4))
+* (if t (print 3) (print 4))
 
-* (if nil (print 3) (print 4))
+* (if nil (print 3) (print 4)) 
   
 * (list 2 (+ 1 5) "a string")
 @ulend
-
-+++
 
 @ul
 * '(list 2 (+ 1 5) "a string") 
@@ -56,7 +54,11 @@ Lisps:
 
 * `(list 2 ,(+ 1 5) "a string")
 
-* (progn (print "hello") (print "world")) # example
+* `(list 2 ,(list 1 5) "a string")
+
+* `(list 2 ,@(list 1 5) "a string")
+
+* (progn (print "hello") (print "world")) ;; example
 
 @ulend
 
@@ -66,6 +68,7 @@ Lisps:
 
 ## QUIZ!
 
+@ul
 * `(+ 2 ,(+ 1 5) )
 
 * (eval `(+ 2 ,(+ 1 5) ) )
@@ -75,6 +78,9 @@ Lisps:
 * `(+ ,(+ 1 5) `(+  2 ,(+ 3 4)))
 
 * `(+ ,(+ 1 5) ,`(+  2 ,(+ 3 4)))
+@ulend
+
+@ul
 
 * (or (print "hello") (print " world"))
 
@@ -86,6 +92,7 @@ Lisps:
 
 * `(+ ,@(loop for x in (list 3 4) collect `(+ 2 ,x)))
 
+@ulend
 
 
 +++
