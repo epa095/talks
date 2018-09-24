@@ -125,13 +125,14 @@ Lisps:
 ```
 -> 6
 
-+++ 
++++
 
 Mostly seen with `*standard-output*`
 
++++
 ## Test framework
 
-
+We might start like this
 ```
 (defun test-+ ()
   (and
