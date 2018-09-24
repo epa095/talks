@@ -63,9 +63,9 @@ Lisps:
 - ``` (progn (print "hello") (print "world")) ```
 @ulend
 
-## QUIZ!
-
 +++
+
+## QUIZ!
 
 @ul
 - ```  `(+ 2 ,(+ 1 5))  ```
