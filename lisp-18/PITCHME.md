@@ -38,20 +38,20 @@ Lisps:
 ## REPL examples
 
 @ul
-* ```lisp
+- ```lisp
 (+ (print 3) (print 4))
 ```
-  
-* 
+
+- 
 ```lisp
 (if t (print 3) (print 4))
 ```
 
-* (if nil (print 3) (print 4)) 
+- (if nil (print 3) (print 4)) 
   
-* (list 2 (+ 1 5) "a string")
+- (list 2 (+ 1 5) "a string")
 
-* '(list 2 (+ 1 5) "a string") 
+- '(list 2 (+ 1 5) "a string") 
 @ulend
 
 +++
