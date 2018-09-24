@@ -40,7 +40,7 @@ Lisps:
 @ul
 - ``` (+ (print 3) (print 4)) ```
 
-- `` (if t (print 3) (print 4)) ```
+- ``` (if t (print 3) (print 4)) ```
 
 - (if nil (print 3) (print 4)) 
   
