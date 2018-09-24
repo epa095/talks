@@ -46,9 +46,10 @@ Lisps:
   
 * (list 2 (+ 1 5) "a string")
 
-+++
-
 * '(list 2 (+ 1 5) "a string") 
+
+@ulend
+@ul
 
 * (eval '(list 2 (+ 1 5) "a string") )
 
@@ -58,11 +59,8 @@ Lisps:
 
 * `(list 2 ,@(list 1 5) "a string")
 
-* (progn (print "hello") (print "world")) ;; example
-
+* (progn (print "hello") (print "world"))
 @ulend
-
-
 
 +++
 
