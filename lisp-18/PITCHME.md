@@ -3,7 +3,7 @@
 +++ 
 or
 
-# Advanced Lisp for programming noobs
+# Advanced Lisp for programming Lisp-noobs
 
 
 +++ 
@@ -21,6 +21,7 @@ Lisps:
 
 ## Prefix notation
 
+@ul
 * fac(5) -> (fac 5)
 
 * gcd(6,3) -> (gcd 6 3)
@@ -30,9 +31,13 @@ Lisps:
 * 4 + 2 + 6 -> (+ 4 2 6) 
   
 * 4 + (6 / 2) -> (+ 4 (/ 6 2))
+@ulend
+
++++ 
 
 ## REPL examples
 
+@ul
 * (+ (print 3) (print 4))
   
 * (if 't (print 3) (print 4))
@@ -40,7 +45,11 @@ Lisps:
 * (if nil (print 3) (print 4))
   
 * (list 2 (+ 1 5) "a string")
+@ulend
 
++++
+
+@ul
 * '(list 2 (+ 1 5) "a string") 
 
 * (eval '(list 2 (+ 1 5) "a string") )
@@ -49,6 +58,7 @@ Lisps:
 
 * (progn (print "hello") (print "world")) # example
 
+@ulend
 
 
 
@@ -78,10 +88,6 @@ Lisps:
 
 
 
-
-
-
-
 +++
 
 ```
@@ -95,16 +101,24 @@ Lisps:
 
 ## Lexical scoping
 
-(defvar *X*)
+(defvar *X* 2)
    
+```
 (defun my-fun(var)
-(+ var *X*))
+   (+ var *X*))
 
-(let ((*X* 5)) (my-fun 4))
+(let ((*X* 5)) 
+  (my-fun 4))
+```
+-> 9
+```
+(my-fun 4)
+```
+-> 6
 
++++ 
 
 Mostly seen with `*standard-output*`
-
 
 ## 
 
