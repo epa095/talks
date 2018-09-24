@@ -38,11 +38,14 @@ Lisps:
 ## REPL examples
 
 @ul
-* ```Lisp
-(+ (print 3) (print 4))```
+* ```lisp
+(+ (print 3) (print 4))
+```
   
-* ```Lisp
-(if t (print 3) (print 4))```
+* 
+```lisp
+(if t (print 3) (print 4))
+```
 
 * (if nil (print 3) (print 4)) 
   
