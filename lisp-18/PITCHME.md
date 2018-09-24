@@ -141,6 +141,8 @@ Mostly seen with `*standard-output*`
 
 +++
 
+But we want to know which of them failed...
+
 ```
 (defun report-result (result form)
   (format t "~:[FAIL~;pass~] ... ~a~%" result form))
@@ -158,14 +160,14 @@ Mostly seen with `*standard-output*`
 ```
 
 +++
-
+But we dont want to duplicate ourself.
 
 ```
 (defmacro check (form)
   `(report-result ,form ',form))
 
 ```
-s
+
 ```
 (macroexpand-1 '(check (= (+ 1 2) 3)))
 
@@ -186,7 +188,8 @@ s
 ```
 
 +++
-Wants to be able to write
+But pretty lame having to write "check" all the time.
+
 ```
 (defun test-+ ()
   (check
@@ -226,7 +229,8 @@ Now we can write
 ```
 
 +++
-But what about the result values?
+But what about the result value? It could indicate success/failure.
+
 ```
 (defun report-result (result form)
   (progn
@@ -237,6 +241,7 @@ But what about the result values?
 
 +++
 
+Naive attempt at combining the results.
 ```
 (defmacro check (&body forms)
   `(and
@@ -244,7 +249,7 @@ But what about the result values?
 ```
 
 +++
-
+We would want something like: 
 ```
 (combine-results
   foo
@@ -271,6 +276,7 @@ But what about the result values?
 ```
 
 +++
+With combine-results we can write check properly
 ```
 (defmacro check (&body forms)
   `(combine-results
@@ -278,14 +284,16 @@ But what about the result values?
 ```
 
 +++
+
+Let's define a failing test to see what happens
+
 ```
  (defun test-+ ()
-           (check (= (+ 1 2) 3)
+      (check (= (+ 1 2) 3)
              (= (+ 1 2 3) 23)
              (= (+ -1 -3) -4)))
 ```
 
-+++
 ```
 CL-USER> (test-+)
 pass ... (= (+ 1 2) 3)
@@ -295,6 +303,8 @@ NIL
 ```
 
 +++
+And a proper one
+
 ```
 (defun test-+ ()
            (check (= (+ 1 2) 3)
@@ -302,7 +312,6 @@ NIL
              (= (+ -1 -3) -4)))
 ```
 
-+++
 ```
 CL-USER> (test-+)
 pass ... (= (+ 1 2) 3)
@@ -312,6 +321,8 @@ T
 ```
 
 +++
+We can even combine the tests
+
 ```
 (defun test-* ()
   (check
@@ -320,18 +331,32 @@ T
 ```
 
 +++
+And we can create test-suites!
 ```
 (defun test-arithmetic ()
   (combine-results
    (test-+)
    (test-*)))
 ```
+
+```
+CL-USER> (test-arithmetic)
+pass ... (= (+ 1 2) 3)
+pass ... (= (+ 1 2 3) 6)
+pass ... (= (+ -1 -3) -4)
+pass ... (= (* 2 2) 4)
+pass ... (= (* 3 5) 15)
+T
+```
+
 +++
+But that output is not very tidy with many tests...
+
 ```
 (defvar *test-name* nil)
 
 ```
-+++
+
 ```
 (defun report-result (result form)
   (progn
@@ -339,6 +364,8 @@ T
     result))
 ```
 +++
+
+We can assign the name in each test...
 ```
 (defun test-+ ()
 (let ((*test-name* 'test-+))
@@ -348,13 +375,14 @@ T
 
 ```
 +++
+But assigning the name in the tests are ugly, we want automation!
+
 ```
 (deftest test-+ ()
        (check (= (+ 1 2) 3)
               (= (+ 1 2 3) 6)
               (= (+ -1 -3) -4)))
 ```
-+++
 ```
 (defmacro deftest (name parameters &body body)
    `(defun ,name ,parameters
@@ -362,6 +390,8 @@ T
       ,@body)))
 ```
 +++
+But what about the hierarchy of tests?
+
 ```
 (defmacro deftest (name parameters &body body)
    `(defun ,name ,parameters
@@ -371,8 +401,8 @@ T
 +++
 
 
-# Why are Lisp loosing?
-Three quotes by Peter Norvig
+# Why is Lisp loosing?
+Three quotes by Peter Norvig:
 
 +++
 
