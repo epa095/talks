@@ -203,7 +203,6 @@ But pretty lame having to write "check" all the time.
 ```
 
 ```
-
 (PROGN
  (REPORT-RESULT (= (+ 1 2) 3) '(= (+ 1 2) 3))
  (REPORT-RESULT (= (+ 1 2 3) 6) '(= (+ 1 2 3) 6))
